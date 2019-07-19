@@ -1,0 +1,18 @@
+- name: install mariadb package
+  yum:
+    name:
+      - mariadb-server-galera-10.1.20
+      - xinetd 
+    state: present
+
+#- name: config  
+#  template:
+#    src: config/
+#    dest: /etc/
+#    owner: 
+#    group: 
+#  with_items:
+#    - 
+#    - 
+#  notify: restart rabbitmq-server
+
