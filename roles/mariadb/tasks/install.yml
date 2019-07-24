@@ -5,14 +5,9 @@
       - xinetd 
     state: present
 
-#- name: config  
-#  template:
-#    src: config/
-#    dest: /etc/
-#    owner: 
-#    group: 
-#  with_items:
-#    - 
-#    - 
-#  notify: restart rabbitmq-server
+- name: config /etc/my.cnf.d/mariadb-server.cnf 
+  template:
+    src: mariadb-server.cnf
+    dest: /etc/my.cnf.d/mariadb-server.cnf
+  notify: start mariadb
 
