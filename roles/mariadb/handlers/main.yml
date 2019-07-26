@@ -7,3 +7,7 @@
     state: started 
     enabled: yes
 
+- name: stop mariadb
+  service:
+    name: mariadb
+    state: stopped 

@@ -1,0 +1,16 @@
+- name: copy percona-xtrabackup file 
+  copy:
+    src: percona-xtrabackup-24-2.4.15-1.el7.x86_64.rpm
+    dest: /tmp/percona-xtrabackup-24-2.4.15-1.el7.x86_64.rpm
+
+- name: install cluster package
+  yum:
+    name:
+      - mariadb-server-galera
+      - /tmp/percona-xtrabackup-24-2.4.15-1.el7.x86_64.rpm
+    state: present
+
+- name: config galera.cnf
+  template:
+    src: galera.cnf
+    dest: /etc/my.cnf.d/galera.cnf

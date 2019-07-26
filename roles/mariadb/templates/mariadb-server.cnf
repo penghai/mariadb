@@ -44,7 +44,7 @@ slow_query_log_file=/var/log/mariadb/slow.log
 log_slow_verbosity=query_plan
 
 init_connect='set autocommit=1'
-init_connect'set names utf8'
+init_connect='set names utf8'
 init_connect='set collation_connection=utf8_general_ci'
 
 max_connections=5000
