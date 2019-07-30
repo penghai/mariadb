@@ -46,6 +46,7 @@ log_slow_verbosity=query_plan
 init_connect='set autocommit=1'
 init_connect='set names utf8'
 init_connect='set collation_connection=utf8_general_ci'
+performance_schema=ON
 
 max_connections=5000
 max_connect_errors=1000
