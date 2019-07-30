@@ -33,7 +33,7 @@ lc_messages_dir=/usr/share/mariadb/
 lc_messages=en_US
 
 skip-character-set-client-handshake
-skip_external_locking
+skip_external_locking=1
 skip_name_resolve=1
 
 expire_logs_days=15
@@ -57,16 +57,48 @@ net_write_timeout=600
 
 thread_cache_size=128
 thread_pool_max_threads=5000
-sort_buffer_size=8M
+sort_buffer_size=1M
 bulk_insert_buffer_size=64M
 tmp_table_size=64M
 max_heap_table_size=64M
+
+{% if ansible_memtotal_mb <= 4096 %}
+max_binlog_size=32M
+max_allowed_packet=32M
+innodb_buffer_pool_size=256M
+innodb_log_buffer_size=64M
+innodb_log_file_size=32M
+{% elif ansible_memtotal_mb > 4096 and ansible_memtotal_mb <= 8192 %}
+max_binlog_size=64M
+max_allowed_packet=64M
+innodb_buffer_pool_size=512M
+innodb_log_buffer_size=128M
+innodb_log_file_size=64M
+{% elif ansible_memtotal_mb > 8192 and ansible_memtotal_mb <= 16384 %}
 max_binlog_size=128M
 max_allowed_packet=128M
-
-innodb_buffer_pool_size=2048M
-innodb_log_buffer_size=64M
+innodb_buffer_pool_size=2G
+innodb_log_buffer_size=256M
 innodb_log_file_size=128M
+{% elif ansible_memtotal_mb > 16384 and ansible_memtotal_mb <= 32768 %}
+max_binlog_size=128M
+max_allowed_packet=128M
+innodb_buffer_pool_size=4G
+innodb_log_buffer_size=512M
+innodb_log_file_size=256M
+{% elif ansible_memtotal_mb > 32768 and ansible_memtotal_mb <= 65536 %}
+max_binlog_size=128M
+max_allowed_packet=128M
+innodb_buffer_pool_size=8G
+innodb_log_buffer_size=1G
+innodb_log_file_size=512M
+{% else %}
+max_binlog_size=265M
+max_allowed_packet=256M
+innodb_buffer_pool_size=16G
+innodb_log_buffer_size=512G
+innodb_log_file_size=256M
+{% endif %}
 innodb_file_per_table=1
 innodb_open_files=20480
 innodb_io_capacity=500

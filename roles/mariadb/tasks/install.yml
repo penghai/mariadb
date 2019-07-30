@@ -12,6 +12,7 @@
   with_items:
     - auth_gssapi.cnf
     - enable_encryption.preset
+    - galera.cnf
 
 - name: config /etc/my.cnf.d/mariadb-server.cnf 
   template:

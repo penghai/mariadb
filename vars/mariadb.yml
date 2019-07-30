@@ -2,3 +2,6 @@
 mariadb_port: 3306
 mariadb_user: root
 mariadb_password: root
+
+mariadb_cluster_name: nd_wsrep_cluster
+mariadb_cluste_init: ph-test01
