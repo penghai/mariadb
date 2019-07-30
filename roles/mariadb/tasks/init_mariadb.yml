@@ -4,7 +4,6 @@
     password: "{{mariadb_password}}"
     update_password: always
     host_all: yes
-  ignore_errors: yes
 
 - name: Configure secret login
   template:

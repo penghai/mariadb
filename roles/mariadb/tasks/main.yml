@@ -6,3 +6,5 @@
 - include: init_mariadb.yml
 
 - include: config_cluster.yml
+
+- include: check_cluster.yml

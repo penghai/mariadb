@@ -11,3 +11,9 @@
   service:
     name: mariadb
     state: stopped 
+
+- name: start xinetd 
+  service:
+    name: xinetd
+    state: restarted 
+    enabled: yes
