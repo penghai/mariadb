@@ -22,7 +22,7 @@ log-error=/var/log/mariadb/mariadb.log
 pid-file=/var/run/mariadb/mariadb.pid
 
 log_warnings=2
-port={{mariadb_port}}
+port=3306
 bind-address={{ansible_ssh_host}}
 default_storage_engine=innodb
 
