@@ -1,4 +1,6 @@
 - hosts: mariadb_nodes
+  vars_files:
+    - "vars/mariadb.yml"
   tasks:
     - name: set _WSREP_NEW_CLUSTER env
       shell: systemctl set-environment _WSREP_NEW_CLUSTER=--wsrep-new-cluster
