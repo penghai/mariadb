@@ -29,7 +29,7 @@
   shell: systemctl unset-environment _WSREP_NEW_CLUSTER
   when: ansible_hostname == (mariadb_cluste_init)
 
-- name: Waiting times for 10s 
+- name: Waiting times for 15s 
   pause: seconds=15
 
 - name: Start the remaining nodes of the mariadb cluster
